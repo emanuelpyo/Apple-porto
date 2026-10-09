@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio Stiven Deryl Imanuel Pyo, Web Developer & IT Support."
+    />
+    <meta name="theme-color" content="#28282b" />
+    <title>Stiven Deryl Imanuel Pyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Lewati ke konten</a>
+    <div class="page-progress" aria-hidden="true"></div>
+
+    <nav class="navbar" id="navbar" aria-label="Navigasi utama">
+      <div class="navbar__bar">
+        <a class="navbar__logo" href="#home">SDP</a>
+        <ul class="navbar__links" id="navbarLinks">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#experience">Pengalaman</a></li>
+          <li><a href="#skills">Keahlian</a></li>
+          <li><a href="#projects">Karya</a></li>
+          <li><a href="#certificates">Sertifikasi</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <button
+          class="navbar__toggle"
+          id="navbarToggle"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="navbarLinks"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero" id="home">
+      <div class="ornaments" aria-hidden="true">
+        <span class="ornament ornament--a"></span>
+        <span class="ornament ornament--b"></span>
+        <span class="ornament ornament--c"></span>
+        <span class="ornament ornament--d"></span>
+        <span class="ornament ornament--e"></span>
+      </div>
+      <div class="hero__content">
+        <div class="hero__intro">
+          <p class="hero__label">Web Developer &amp; IT Support</p>
+          <h1 class="hero__name">
+            <span class="hero__line"><span>Stiven Deryl</span></span>
+            <span class="hero__line hero__line--muted"
+              ><span>Imanuel Pyo</span></span
+            >
+          </h1>
+          <p class="hero__lede">
+            Lulusan Informatika yang membangun antarmuka web dan merawat sistem
+            di baliknya. Berbasis di Bali, terbuka untuk peluang penuh waktu.
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">Lihat karya</a>
+            <a href="#contact" class="btn btn--ghost">Hubungi saya</a>
+          </div>
+        </div>
+
+        <div class="hero__portrait">
+          <!-- Ganti foto profil di sini: assets/img/prp.jpeg -->
+          <div class="portrait-frame">
+            <img src="assets/img/prp.jpeg" alt="Stiven Deryl Imanuel Pyo" />
+            <span class="photo-frame" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <dl class="hero__stats">
+        <div>
+          <dt>3</dt>
+          <dd>Proyek tersusun</dd>
+        </div>
+        <div>
+          <dt>3</dt>
+          <dd>Bidang keahlian</dd>
+        </div>
+        <div>
+          <dt>2026</dt>
+          <dd>Magang aktif</dd>
+        </div>
+      </dl>
+    </header>
+
+    <main id="main">
+      <section class="section" id="about">
+        <div class="section__ornament section__ornament--about-a" aria-hidden="true"></div>
+        <div class="section__ornament section__ornament--about-b" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">01</span>
+          <h2 class="section__title">Tentang</h2>
+        </div>
+        <div class="about">
+          <figure class="about__media reveal">
+            <!-- Ganti foto bagian tentang di sini: assets/img/prp.jpeg -->
+            <img src="assets/img/prp.jpeg" alt="Stiven Deryl Imanuel Pyo" />
+            <span class="photo-frame" aria-hidden="true"></span>
+          </figure>
+          <div class="about__body reveal" style="--reveal-delay: 100ms">
+            <h3>Web Developer &amp; IT Support</h3>
+            <p>
+              Saya lulusan Informatika Universitas Sanata Dharma Yogyakarta.
+              Saat ini menjalani magang sebagai IT Support &amp; Web Developer
+              di PT Primadaya Plastisindo Tbk cabang Solo, Surakarta.
+            </p>
+            <p>
+              Saya mengerjakan dua sisi sekaligus: membangun antarmuka web yang
+              rapi dan mudah dipakai, serta menjaga infrastruktur dan sistem
+              internal tetap berjalan. Sisi frontend memberi saya kepekaan
+              terhadap tampilan, sisi support melatih ketelitian terhadap
+              masalah nyata di lapangan.
+            </p>
+            <ul class="about__facts">
+              <li><span>Lokasi</span>Bali, Indonesia</li>
+              <li><span>Fokus</span>Web Development</li>
+              <li><span>Minat</span>Machine Learning</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="section__ornament section__ornament--exp-a" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">02</span>
+          <h2 class="section__title">Pengalaman</h2>
+        </div>
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <div class="timeline__meta">
+              <span class="timeline__type">Magang</span>
+              <span class="timeline__time">2026</span>
+            </div>
+            <div class="timeline__body">
+              <h3>IT Support &amp; Web Developer</h3>
+              <p class="timeline__org">
+                PT Primadaya Plastisindo Tbk cabang Solo
+              </p>
+              <p>
+                Menjaga operasional infrastruktur perusahaan dan menangani
+                perangkat keras serta lunak yang bermasalah. Sekaligus membantu
+                pengembangan sistem web internal, dari logika backend sampai
+                kerapian tampilan.
+              </p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__meta">
+              <span class="timeline__type">Pelatihan</span>
+              <span class="timeline__time">IBM</span>
+            </div>
+            <div class="timeline__body">
+              <h3>IBM SkillsBuild Certification</h3>
+              <p class="timeline__org">IBM</p>
+              <p>
+                Menyelesaikan sertifikasi digital Natural Language Processing,
+                mencakup dasar pemrosesan teks dan penerapan model bahasa
+                sederhana.
+              </p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__meta">
+              <span class="timeline__type">Pendidikan</span>
+              <span class="timeline__time">S1</span>
+            </div>
+            <div class="timeline__body">
+              <h3>Informatika</h3>
+              <p class="timeline__org">Universitas Sanata Dharma</p>
+              <p>
+                Menempuh S1 Informatika dengan dasar analisis dan rekayasa
+                perangkat lunak untuk menyelesaikan kebutuhan sistem yang
+                kompleks.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section__ornament section__ornament--skills-a" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">03</span>
+          <h2 class="section__title">Keahlian</h2>
+        </div>
+        <div class="skills">
+          <div class="skills__group reveal">
+            <p class="skills__label">Frontend</p>
+            <ul class="skills__list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal" style="--reveal-delay: 80ms">
+            <p class="skills__label">Backend</p>
+            <ul class="skills__list">
+              <li>PHP</li>
+              <li>Laravel</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal" style="--reveal-delay: 160ms">
+            <p class="skills__label">Framework</p>
+            <ul class="skills__list">
+              <li>React</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal" style="--reveal-delay: 80ms">
+            <p class="skills__label">Data</p>
+            <ul class="skills__list">
+              <li>Python</li>
+              <li>TensorFlow</li>
+              <li>OpenAI</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal" style="--reveal-delay: 160ms">
+            <p class="skills__label">Tools</p>
+            <ul class="skills__list">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section__ornament section__ornament--left" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">04</span>
+          <h2 class="section__title">Karya</h2>
+        </div>
+
+        <article class="feature reveal">
+          <div class="feature__media">
+            <div
+              class="gallery"
+              id="projectGallery"
+              role="group"
+              aria-label="Galeri Cate Studio"
+            >
+              <img
+                src="assets/img/project1/1.png"
+                alt="Cate Studio, tampilan 1"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image is-active"
+              />
+              <img
+                src="assets/img/project1/2.png"
+                alt="Cate Studio, tampilan 2"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <img
+                src="assets/img/project1/3.png"
+                alt="Cate Studio, tampilan 3"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <img
+                src="assets/img/project1/4.png"
+                alt="Cate Studio, tampilan 4"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <img
+                src="assets/img/project1/5.png"
+                alt="Cate Studio, tampilan 5"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <img
+                src="assets/img/project1/6.png"
+                alt="Cate Studio, tampilan 6"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <img
+                src="assets/img/project1/7.png"
+                alt="Cate Studio, tampilan 7"
+                loading="lazy"
+                decoding="async"
+                class="gallery__image"
+              />
+              <button
+                class="gallery__nav gallery__nav--prev"
+                id="galleryPrev"
+                type="button"
+                aria-label="Tampilan sebelumnya"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 18l-6-6 6-6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                class="gallery__nav gallery__nav--next"
+                id="galleryNext"
+                type="button"
+                aria-label="Tampilan berikutnya"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 6l6 6-6 6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="gallery__dots"
+              id="galleryDots"
+              role="tablist"
+              aria-label="Pilih tampilan"
+            ></div>
+          </div>
+          <div class="feature__body">
+            <span class="feature__num">01</span>
+            <h3>Cate Studio</h3>
+            <p>
+              Platform e-commerce untuk brand fashion yang ingin toko online
+              eksklusif. Menyediakan katalog produk, filter, keranjang belanja,
+              integrasi pembayaran, dan nota digital.
+            </p>
+            <ul class="stack">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+        </article>
+
+        <ul class="project-list">
+          <li class="project-list__item reveal">
+            <span class="project-list__num">02</span>
+            <div>
+              <h3>Hotel Booking System</h3>
+              <p>
+                Sistem pemesanan kamar hotel dengan papan kanban untuk
+                operasional harian, pengelolaan kamar, dan katalog kamar.
+              </p>
+            </div>
+          </li>
+          <li class="project-list__item reveal">
+            <span class="project-list__num">03</span>
+            <div>
+              <h3>Inventory Management</h3>
+              <p>
+                Sistem manajemen inventaris untuk perusahaan yang membutuhkan
+                transparansi stok dan alur pengelolaan barang.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="certificates">
+        <div class="section__ornament section__ornament--cert-a" aria-hidden="true"></div>
+        <div class="section__ornament section__ornament--cert-b" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">05</span>
+          <h2 class="section__title">Sertifikasi</h2>
+        </div>
+        <ul class="certs">
+          <li class="certs__item reveal">
+            <button
+              class="cert-row"
+              type="button"
+              data-cert-type="pdf"
+              data-cert-src="assets/img/sertif/skillsbuild-completion.pdf"
+              data-cert-title="IBM SkillsBuild, Completion Certificate"
+            >
+              <span class="cert-row__meta">IBM</span>
+              <span class="cert-row__title">Completion Certificate</span>
+              <span class="cert-row__action">Lihat</span>
+            </button>
+          </li>
+          <li class="certs__item reveal">
+            <button
+              class="cert-row"
+              type="button"
+              data-cert-type="image"
+              data-cert-src="assets/img/sertif/skillsbuild-nlp.jpg"
+              data-cert-title="IBM SkillsBuild, Natural Language Processing"
+            >
+              <span class="cert-row__meta">IBM</span>
+              <span class="cert-row__title">Natural Language Processing</span>
+              <span class="cert-row__action">Lihat</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section__ornament section__ornament--right" aria-hidden="true"></div>
+        <div class="section__head reveal">
+          <span class="section__num">06</span>
+          <h2 class="section__title">Kontak</h2>
+        </div>
+        <div class="contact">
+          <div class="contact__lead reveal">
+            <p class="contact__headline">
+              Ada proyek atau peluang yang ingin dibicarakan?
+            </p>
+            <p class="contact__sub">
+              Terbuka untuk kolaborasi, konsultasi, maupun tawaran penuh waktu.
+              Kirim pesan lewat salah satu kanal di samping.
+            </p>
+          </div>
+          <ul class="contact__links">
+            <li class="reveal">
+              <a
+                class="contact-item"
+                href="mailto:derylpyo@gmail.com"
+                aria-label="Email derylpyo@gmail.com"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path
+                    d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>derylpyo@gmail.com</span>
+              </a>
+            </li>
+            <li class="reveal" style="--reveal-delay: 80ms">
+              <a
+                class="contact-item"
+                href="https://wa.me/62895414883060"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+            </li>
+            <li class="reveal" style="--reveal-delay: 160ms">
+              <a
+                class="contact-item"
+                href="https://github.com/emanuelpyo"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </li>
+            <li class="reveal" style="--reveal-delay: 240ms">
+              <a
+                class="contact-item"
+                href="https://www.linkedin.com/in/derylpyo/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v2a6 6 0 0 1 2-2z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <rect width="4" height="12" x="2" y="9" rx="1" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <p>&copy; 2026 Stiven Deryl Imanuel Pyo</p>
+        <a href="#home">Kembali ke atas</a>
+      </div>
+    </footer>
+
+    <a
+      class="back-to-top"
+      id="backToTop"
+      href="#home"
+      aria-label="Kembali ke atas"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 19V5M5 12l7-7 7 7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <div
+      class="modal"
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__panel">
+        <div class="modal__head">
+          <span class="modal__title" id="modalTitle"></span>
+          <button
+            class="modal__close"
+            id="modalClose"
+            type="button"
+            aria-label="Tutup"
+          >
+            Tutup
+          </button>
+        </div>
+        <div class="modal__body" id="modalBody"></div>
+        <div class="modal__foot">
+          <a
+            class="modal__open"
+            id="modalOpen"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Buka di tab baru</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
