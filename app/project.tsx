@@ -155,7 +155,7 @@ export default function Project() {
                   <div className="mb-8">
                     <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Tampilan</span>
                     <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-text-secondary/15 bg-thirdary/20">
-                      <Image src={activeProject.gallery[activeImage]} alt={`${activeProject.title} tampilan ${activeImage + 1}`} fill sizes="(max-width: 768px) 100vw, 640px" className="object-cover" />
+                      <Image src={activeProject.gallery[activeImage]} alt={`${activeProject.title} tampilan ${activeImage + 1}`} fill sizes="(max-width: 768px) 100vw, 640px" className={activeProject.galleryFit === "contain" ? "object-contain" : "object-cover"} />
                     </div>
                     {activeProject.gallery.length > 1 && (
                       <div className="mt-3 flex gap-2 overflow-x-auto custom-scrollbar pb-1">

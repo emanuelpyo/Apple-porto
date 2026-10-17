@@ -6,6 +6,8 @@ import FadeLeft from "@/components/animations/FadeLeft"
 import { profile } from "@/data/profile"
 import { socialList, quickStatsList } from "@/data/hero"
 
+const CV_PATH = "/cv/StivenDerylImanuelPyo_Resume_AppleAcademy.pdf"
+
 export default function Hero() {
   const [index, setIndex] = useState(0)
   const [subIndex, setSubIndex] = useState(0)
@@ -22,10 +24,10 @@ export default function Hero() {
   }
 
   // Check whether the CV file exists before enabling the button, so we never
-  // ship an active control that 404s. Drop the PDF at public/cv/cv.pdf.
+  // ship an active control that 404s.
   useEffect(() => {
     let active = true
-    fetch("/cv/cv.pdf", { method: "HEAD" })
+    fetch(CV_PATH, { method: "HEAD" })
       .then((res) => {
         if (active) setHasCv(res.ok)
       })
@@ -94,7 +96,7 @@ export default function Hero() {
 
             {hasCv ? (
               <a
-                href="/cv/cv.pdf"
+                href={CV_PATH}
                 download
                 className="cursor-pointer text-sm md:text-base font-bold border-2 border-text-secondary/20 hover:border-text-primary text-text-primary px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-thirdary/40 transition-all duration-300 ease-out bg-background/50 backdrop-blur-sm"
               >

@@ -21,10 +21,6 @@ export default function Contact() {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const setInitialWelcomeMessage = () => {
-    clearMessages()
-  }
-
   useEffect(() => {
     if (isOpenChat) {
       scrollToBottom()
@@ -70,7 +66,6 @@ Informasi tentang ${profile.shortName}:
    - Peran: Web Developer dan IT Support, lulusan Informatika
    - Lokasi: ${profile.location}
    - Email: ${profile.email}
-   - WhatsApp: ${profile.phoneLabel}
    - LinkedIn: ${profile.linkedin}
    - GitHub: ${profile.github}
    - Pendidikan: ${profile.education}
@@ -141,7 +136,7 @@ Aturan: Jawab langsung ke intinya, jangan menambahkan informasi yang tidak ada d
           id: (Date.now() + 1).toString(),
           sender: "bot",
           text: message.toLowerCase().includes("konfigurasi")
-            ? "Asisten AI belum dikonfigurasi pada server ini, jadi gue belum bisa menjawab otomatis. Silakan hubungi Deryl lewat email, WhatsApp, atau LinkedIn di bagian kontak."
+            ? "Asisten AI belum dikonfigurasi pada server ini, jadi gue belum bisa menjawab otomatis. Silakan hubungi Deryl lewat email atau LinkedIn di bagian kontak."
             : `Maaf, terjadi kesalahan koneksi atau server AI. (${message})`,
           timestamp: new Date(),
         },
@@ -239,7 +234,7 @@ Aturan: Jawab langsung ke intinya, jangan menambahkan informasi yang tidak ada d
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button onClick={() => { setInitialWelcomeMessage(); localStorage.removeItem("deryl_chat_messages") }} className="text-text-secondary hover:text-red-500 transition-colors p-2 bg-text-secondary/5 rounded-full" title="Mulai baru" aria-label="Mulai percakapan baru">
+              <button onClick={clearMessages} className="text-text-secondary hover:text-red-500 transition-colors p-2 bg-text-secondary/5 rounded-full" title="Mulai baru" aria-label="Mulai percakapan baru">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16" />
                 </svg>

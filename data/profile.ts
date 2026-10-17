@@ -1,13 +1,11 @@
 export const profile = {
   name: "Stiven Deryl Imanuel Pyo",
   shortName: "Deryl",
-  roles: ["Web Developer", "IT Support", "Frontend Developer", "Informatics Graduate"],
+  roles: ["Web Developer", "IT Support", "Frontend Developer"],
   tagline:
     "Halo! saya suka bereksperimen dengan ide-ide baru. Bagi saya, setiap baris kode adalah cara untuk menghadirkan sesuatu yang bermanfaat dan keren di dunia digital.",
   location: "Indonesia",
-  email: "derylpyo@gmail.com",
-  phoneLabel: "+62 895-4148-83060",
-  whatsapp: "https://wa.me/62895414883060",
+  email: "deryl@lawkey.id",
   github: "https://github.com/emanuelpyo",
   linkedin: "https://www.linkedin.com/in/derylpyo/",
   education: "Universitas Sanata Dharma Yogyakarta",
@@ -18,7 +16,7 @@ export const profile = {
   personalDetails: [
     { label: "Nama", value: "Stiven Deryl Imanuel Pyo" },
     { label: "Lokasi", value: "Indonesia" },
-    { label: "Email", value: "derylpyo@gmail.com", href: "mailto:derylpyo@gmail.com" },
+    { label: "Email", value: "deryl@lawkey.id", href: "mailto:deryl@lawkey.id" },
     { label: "Fokus", value: "Web Development" },
     { label: "Minat", value: "Machine Learning" },
     { label: "Pendidikan", value: "Universitas Sanata Dharma Yogyakarta" },

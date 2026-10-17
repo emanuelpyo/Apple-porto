@@ -64,6 +64,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Intro splash fail-safe.
+   PageLoader normally removes the overlay from the client after the intro.
+   If client JavaScript never runs (failed chunk, hydration error, stale build)
+   this CSS-only backstop still reveals the server-rendered page instead of
+   leaving a permanent near-black overlay. Its timing matches the normal
+   intro (1.8s hold + 0.8s fade), so the visible behaviour is unchanged. */
+@keyframes splash-failsafe {
+  0%,
+  69% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.splash-failsafe {
+  animation: splash-failsafe 2.6s ease-in-out forwards;
+}
+
 /* Cursor blink for the hero typing effect */
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }

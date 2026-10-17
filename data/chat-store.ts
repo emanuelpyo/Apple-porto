@@ -84,8 +84,4 @@ export function clearMessages(): void {
   emit()
 }
 
-export function getChatMessages(): ChatMessage[] {
-  return getSnapshot()
-}
-
 export { getServerSnapshot }

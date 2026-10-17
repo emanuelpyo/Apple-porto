@@ -1,12 +1,12 @@
 # Dependencies
 /node_modules
 node_modules/
-.pnp
+/.pnp
 .pnp.*
 jspm_packages/
 web_modules/
 bower_components/
-.pnpm-store
+/.pnpm-store
 
 # Logs
 logs/
@@ -21,7 +21,7 @@ lerna-debug.log*
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Runtime data
-pids
+pids/
 *.pid
 *.seed
 *.pid.lock
@@ -41,8 +41,8 @@ build/
 .output/
 .vuepress/dist/
 .svelte-kit/
-**/.vitepress/dist
-**/.vitepress/cache
+**/.vitepress/dist/
+**/.vitepress/cache/
 .docusaurus/
 .astro/
 .cache/
@@ -72,7 +72,7 @@ next-env.d.ts
 .yarn-integrity
 .pnpm-debug.log*
 
-# Environment variables
+# Environment variables and secrets
 .env
 .env.*
 !.env.example
@@ -99,4 +99,4 @@ next-env.d.ts
 
 # Gatsby
 # Uncomment if this project uses Gatsby:
-# public
+# /public
