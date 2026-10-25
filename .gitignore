@@ -37,6 +37,7 @@ coverage/
 out/
 dist/
 build/
+/bin/
 .nuxt/
 .output/
 .vuepress/dist/
