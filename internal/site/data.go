@@ -108,7 +108,7 @@ type ContactLink struct {
 }
 
 var profile = Profile{
-	Name:      "Stiven Deryl Imanuel Pyo",
+	Name:      "Deryl Pyo",
 	ShortName: "Deryl",
 	Roles: map[string][]string{
 		"id": {"Pengembang Web", "Dukungan IT", "Frontend Developer"},

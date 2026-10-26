@@ -15,44 +15,6 @@
   var currentLang = "id";
 
   /* ----------------------------------------------------------------
-     Theme toggle (dark is the default; choice persists in localStorage)
-     ---------------------------------------------------------------- */
-  (function theme() {
-    var toggle = document.getElementById("theme-toggle");
-    if (!toggle) return;
-
-    var isDark = localStorage.getItem("theme") !== "light";
-    var darkIcon = toggle.querySelector(".theme-icon-dark");
-    var lightIcon = toggle.querySelector(".theme-icon-light");
-
-    function apply() {
-      document.documentElement.classList.toggle("dark", isDark);
-      if (darkIcon) darkIcon.classList.toggle("hidden", !isDark);
-      if (lightIcon) lightIcon.classList.toggle("hidden", isDark);
-      updateThemeAria();
-    }
-
-    toggle.addEventListener("click", function () {
-      isDark = !isDark;
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      apply();
-    });
-
-    apply();
-  })();
-
-  function updateThemeAria() {
-    var toggle = document.getElementById("theme-toggle");
-    if (!toggle) return;
-    var isDark = document.documentElement.classList.contains("dark");
-    var dict = (config.dict && config.dict[currentLang]) || {};
-    var label = isDark
-      ? (dict.theme_to_light || "Aktifkan tema terang")
-      : (dict.theme_to_dark || "Aktifkan tema gelap");
-    toggle.setAttribute("aria-label", label);
-  }
-
-  /* ----------------------------------------------------------------
      Bilingual i18n system (Indonesian default, English alternative)
      ---------------------------------------------------------------- */
   var i18nListeners = [];
@@ -144,10 +106,7 @@
       }
     });
 
-    // 10. Update theme aria-label for active language
-    updateThemeAria();
-
-    // 11. Notify subscribers (hero typing, chat)
+    // 10. Notify subscribers (hero typing, chat)
     i18nListeners.forEach(function (fn) {
       try {
         fn(lang);

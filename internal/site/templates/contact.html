@@ -1,115 +1,119 @@
 {{define "contact"}}
-<section id="contacts" class="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative overflow-hidden border-t border-text-secondary/10">
-  <div class="reveal" data-reveal="down">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-24 w-full text-left">
-      <h2 class="text-sm font-bold tracking-[0.2em] text-text-secondary uppercase mb-4" data-i18n="contact_eyebrow">Hubungi Saya</h2>
-      <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-text-primary tracking-tighter" data-i18n="contact_title">Kontak</h3>
-    </div>
+<section id="contacts" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+  <div class="reveal mb-12 md:mb-16" data-reveal="down">
+    <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="contact_eyebrow">Hubungi Saya</h2>
+    <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="contact_title">Kontak</h3>
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
-    <div class="reveal" data-reveal="down" style="transition-delay: 200ms">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-background border border-text-secondary/20 rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-center">
-          <p class="text-2xl md:text-3xl font-black text-text-primary tracking-tight mb-4" data-i18n="contact_card_heading">Ada proyek atau peluang yang ingin dibicarakan?</p>
-          <p class="text-base text-text-secondary font-medium leading-relaxed mb-8" data-i18n="contact_card_desc">
-            Terbuka untuk kolaborasi, konsultasi, maupun tawaran penuh waktu. Kirim pesan lewat salah satu kanal di samping, atau ngobrol langsung dengan asisten AI di pojok kanan bawah.
-          </p>
-          <button type="button" data-chat-open class="self-start cursor-pointer text-sm font-bold bg-text-primary text-background px-6 py-3 rounded-xl flex items-center gap-3 hover:-translate-y-1 transition-all duration-300">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z" />
-            </svg>
-            <span data-i18n="contact_ask_ai">Tanya Asisten AI</span>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-2 gap-4">
-          {{range .ContactLinks}}
-          <a href="{{.Href}}" target="_blank" rel="noopener noreferrer" class="group bg-background border border-text-secondary/20 rounded-2xl p-5 flex flex-col justify-between gap-6 hover:border-text-primary hover:bg-text-secondary/5 transition-all duration-300 shadow-sm hover:shadow-md min-h-[130px]">
-            <div class="w-12 h-12 rounded-full bg-text-secondary/10 flex items-center justify-center text-text-primary group-hover:scale-110 transition-transform duration-300">{{.Icon}}</div>
-            <div>
-              <h4 class="text-base font-bold text-text-primary" data-i18n-id="{{.Label.ID}}" data-i18n-en="{{.Label.EN}}">{{.Label.ID}}</h4>
-              <p class="text-xs font-medium text-text-secondary truncate">{{.Value}}</p>
-            </div>
-          </a>
-          {{end}}
-        </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-6 apple-card p-8 md:p-10 flex flex-col justify-between bg-white/75 border border-white/80">
+      <div>
+        <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4" data-i18n="contact_card_heading">Ada proyek atau peluang yang ingin dibicarakan?</p>
+        <p class="text-sm md:text-base text-text-secondary font-medium leading-relaxed mb-8" data-i18n="contact_card_desc">
+          Terbuka untuk kolaborasi, konsultasi, maupun tawaran penuh waktu. Kirim pesan lewat salah satu kanal di samping, atau ngobrol langsung dengan asisten AI di pojok kanan bawah.
+        </p>
       </div>
+
+      <button type="button" data-chat-open class="self-start cursor-pointer text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover text-white px-7 py-3.5 rounded-full flex items-center gap-2 active:scale-95 transition-all shadow-md">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z" />
+        </svg>
+        <span data-i18n="contact_ask_ai">Tanya Asisten AI</span>
+      </button>
+    </div>
+
+    <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {{range .ContactLinks}}
+      <a href="{{.Href}}" target="_blank" rel="noopener noreferrer" class="apple-card p-6 flex flex-col justify-between gap-6 group hover:-translate-y-0.5 transition-all bg-white/75 border border-white/80">
+        <div class="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-text-primary shadow-xs border border-white/80 group-hover:scale-105 transition-transform">
+          {{.Icon}}
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 tracking-tight mb-0.5" data-i18n-id="{{.Label.ID}}" data-i18n-en="{{.Label.EN}}">{{.Label.ID}}</h4>
+          <p class="text-xs text-text-secondary font-medium truncate">{{.Value}}</p>
+        </div>
+      </a>
+      {{end}}
     </div>
   </div>
 
-  <div class="fixed bottom-6 right-6 lg:bottom-12 lg:right-12 z-40">
-    <button data-chat-open class="group bg-text-primary text-background p-4 md:p-5 rounded-full shadow-2xl hover:-translate-y-2 transition-all duration-300 flex items-center justify-center relative border-4 border-background" aria-label="Buka asisten AI {{.Profile.ShortName}}" data-i18n-aria="chat_open_label">
-      <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z" />
+  <!-- Apple iOS Floating Siri/Messages AI Trigger Button with Liquid Glass -->
+  <div class="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40">
+    <button data-chat-open class="cursor-pointer liquid-glass group p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center relative text-text-primary" aria-label="Buka asisten AI {{.Profile.ShortName}}" data-i18n-aria="chat_open_label">
+      <svg class="w-5 h-5 sm:w-6 sm:h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z" />
       </svg>
-      <span class="absolute -top-2 -right-2 flex h-5 w-5 md:h-6 md:w-6">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-5 w-5 md:h-6 md:w-6 bg-thirdary text-text-primary border border-text-secondary/20 text-[10px] md:text-xs font-bold items-center justify-center">AI</span>
+      <span class="absolute -top-1 -right-1 flex h-4 w-4">
+        <span class="relative inline-flex rounded-full h-4 w-4 bg-accent text-white text-[9px] font-bold items-center justify-center shadow-xs">AI</span>
       </span>
     </button>
   </div>
 
-  <div id="chat-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-0 transition-all duration-500 opacity-0 invisible pointer-events-none">
-    <div class="absolute inset-0 bg-background/90 backdrop-blur-xl transition-opacity duration-500 opacity-0" data-chat-close></div>
+  <!-- iOS Messages style chat sheet -->
+  <div id="chat-overlay" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6 transition-all duration-300 opacity-0 invisible pointer-events-none">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-2xl transition-opacity duration-300 opacity-0" data-chat-close></div>
 
-    <div id="chat-panel" class="bg-background w-full h-[100dvh] shadow-2xl z-10 flex flex-col transition-all duration-500 transform translate-y-12 scale-95 opacity-0" role="dialog" aria-modal="true" aria-label="Asisten AI" data-i18n-aria="chat_dialog_label">
-      <div class="flex justify-between items-center p-4 md:p-6 border-b border-text-secondary/10 bg-background relative z-20">
+    <div id="chat-panel" class="bg-white/95 backdrop-blur-2xl w-full sm:max-w-xl h-[88dvh] sm:h-[680px] rounded-t-3xl sm:rounded-3xl shadow-2xl z-10 flex flex-col border border-white/90 transition-all duration-300 transform translate-y-8 scale-95 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-label="Asisten AI" data-i18n-aria="chat_dialog_label">
+      <!-- iOS Header -->
+      <div class="flex justify-between items-center px-5 py-4 border-b border-black/5 bg-white/70 backdrop-blur-md">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-thirdary flex items-center justify-center text-text-primary font-black border border-text-secondary/10">AI</div>
+          <div class="w-9 h-9 rounded-full bg-accent/15 text-accent flex items-center justify-center font-bold text-xs">AI</div>
           <div>
-            <h3 class="text-lg font-black text-text-primary tracking-tight leading-none" data-i18n="chat_title">Asisten Deryl</h3>
-            <span class="text-xs text-green-500 font-bold flex items-center gap-1 mt-1">
-              <span class="w-2 h-2 rounded-full bg-green-500 block animate-pulse"></span> <span data-i18n="chat_status_online">Online</span>
+            <h3 class="text-sm font-bold text-slate-900 tracking-tight leading-tight" data-i18n="chat_title">Asisten Deryl</h3>
+            <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+              <span data-i18n="chat_status_online">Online</span>
             </span>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button data-chat-clear class="text-text-secondary hover:text-red-500 transition-colors p-2 bg-text-secondary/5 rounded-full" title="Mulai baru" aria-label="Mulai percakapan baru" data-i18n-title="chat_clear_title" data-i18n-aria="chat_clear_label">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16" />
+        <div class="flex items-center gap-1.5">
+          <button data-chat-clear class="text-text-secondary hover:text-red-500 p-2 rounded-full hover:bg-black/5 transition-colors cursor-pointer" title="Mulai baru" aria-label="Mulai percakapan baru" data-i18n-title="chat_clear_title" data-i18n-aria="chat_clear_label">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16" />
             </svg>
           </button>
-          <button data-chat-close class="text-text-secondary hover:text-text-primary transition-colors p-2 bg-text-secondary/5 rounded-full" title="Tutup" aria-label="Tutup asisten" data-i18n-title="chat_close_title" data-i18n-aria="chat_close_label">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12" />
+          <button data-chat-close class="text-text-secondary hover:text-slate-900 p-2 rounded-full hover:bg-black/5 transition-colors cursor-pointer" title="Tutup" aria-label="Tutup asisten" data-i18n-title="chat_close_title" data-i18n-aria="chat_close_label">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
       </div>
 
-      <div class="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth custom-scrollbar bg-thirdary/10 flex flex-col items-center">
-        <div class="w-full max-w-4xl flex flex-col gap-4 pb-4">
-          <div id="chat-config-warning" class="hidden w-full text-center text-xs font-bold text-text-secondary bg-thirdary/40 border border-text-secondary/10 rounded-xl px-4 py-2" data-i18n="chat_unconfigured_warn">
+      <!-- Messages Thread Area -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-5 custom-scrollbar bg-slate-50/50 flex flex-col">
+        <div class="w-full flex flex-col gap-3 pb-2">
+          <div id="chat-config-warning" class="hidden w-full text-center text-xs text-text-secondary bg-white border border-black/5 rounded-2xl px-4 py-2 shadow-xs" data-i18n="chat_unconfigured_warn">
             Asisten AI belum dikonfigurasi. Riwayat percakapan tetap tersimpan di perangkat ini.
           </div>
 
-          <div id="chat-messages" class="flex flex-col gap-4">
+          <div id="chat-messages" class="flex flex-col gap-3">
             <div class="flex w-full justify-start" data-msg-id="welcome-msg">
-              <div class="max-w-[85%] rounded-2xl px-5 py-3 bg-background border border-text-secondary/10 text-text-primary rounded-tl-sm shadow-sm">
-                <div class="chat-welcome-body text-sm font-medium leading-relaxed overflow-hidden" data-i18n="chat_welcome_text">Halo! Gue asisten AI {{.Profile.ShortName}}. Ada yang bisa gue bantu soal portofolio, pengalaman, atau project {{.Profile.ShortName}}?</div>
-                <span class="text-[10px] uppercase font-bold tracking-wider mt-2 block text-text-secondary/70">{{.WelcomeTime}}</span>
+              <div class="max-w-[85%] rounded-2xl px-4 py-2.5 bg-white border border-black/5 text-slate-900 rounded-tl-sm shadow-xs">
+                <div class="chat-welcome-body text-xs sm:text-sm font-medium leading-relaxed" data-i18n="chat_welcome_text">Halo! Gue asisten AI {{.Profile.ShortName}}. Ada yang bisa gue bantu soal portofolio, pengalaman, atau project {{.Profile.ShortName}}?</div>
+                <span class="text-[10px] uppercase font-bold text-text-secondary/60 mt-1.5 block">{{.WelcomeTime}}</span>
               </div>
             </div>
           </div>
 
           <div id="chat-typing" class="hidden flex w-full justify-start">
-            <div class="max-w-[85%] bg-background border border-text-secondary/10 rounded-2xl rounded-tl-sm px-5 py-4 shadow-sm flex gap-1.5 items-center">
-              <div class="w-2 h-2 rounded-full bg-text-secondary/40 animate-bounce" style="animation-delay: 0ms"></div>
-              <div class="w-2 h-2 rounded-full bg-text-secondary/40 animate-bounce" style="animation-delay: 150ms"></div>
-              <div class="w-2 h-2 rounded-full bg-text-secondary/40 animate-bounce" style="animation-delay: 300ms"></div>
+            <div class="max-w-[85%] bg-white border border-black/5 rounded-2xl rounded-tl-sm px-4 py-3 shadow-xs flex gap-1.5 items-center">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-secondary/50 animate-bounce" style="animation-delay: 0ms"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-text-secondary/50 animate-bounce" style="animation-delay: 150ms"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-text-secondary/50 animate-bounce" style="animation-delay: 300ms"></div>
             </div>
           </div>
           <div id="chat-end"></div>
         </div>
       </div>
 
-      <div class="p-4 border-t border-text-secondary/10 bg-background flex justify-center">
-        <form id="chat-form" class="flex gap-2 w-full max-w-4xl">
-          <input id="chat-input" type="text" autocomplete="off" placeholder="Tanya apa saja soal Deryl..." data-i18n-placeholder="chat_input_placeholder" data-i18n-aria="chat_input_label" class="flex-1 bg-thirdary/30 border border-text-secondary/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-text-primary text-text-primary font-medium transition-colors" aria-label="Tulis pesan" />
-          <button id="chat-send" type="submit" disabled class="bg-text-primary text-background p-3 rounded-xl hover:-translate-y-0.5 transition-transform disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" aria-label="Kirim pesan" data-i18n-aria="chat_send_label">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      <!-- iOS Style Input Bar -->
+      <div class="p-3 sm:p-4 border-t border-black/5 bg-white">
+        <form id="chat-form" class="flex items-center gap-2 w-full">
+          <input id="chat-input" type="text" autocomplete="off" placeholder="Tanya apa saja soal Deryl..." data-i18n-placeholder="chat_input_placeholder" data-i18n-aria="chat_input_label" class="flex-1 bg-slate-100/80 border border-black/5 rounded-full px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-accent text-slate-900 transition-colors" aria-label="Tulis pesan" />
+          <button id="chat-send" type="submit" disabled class="bg-accent text-white p-2.5 rounded-full hover:bg-accent-hover active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shadow-xs" aria-label="Kirim pesan" data-i18n-aria="chat_send_label">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
             </svg>
           </button>
         </form>
