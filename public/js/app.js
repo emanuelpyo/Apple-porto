@@ -84,6 +84,17 @@
       if (alt) el.setAttribute("aria-label", prefix + alt);
     });
 
+    // 7b. Graduation flip button aria-label
+    document.querySelectorAll("[data-i18n-aria-flip-id]").forEach(function (el) {
+      var alt = lang === "en" ? el.getAttribute("data-i18n-aria-flip-en") : el.getAttribute("data-i18n-aria-flip-id");
+      if (!alt) return;
+      var flipped = el.getAttribute("aria-pressed") === "true";
+      var prefix = lang === "en"
+        ? (flipped ? "Return to photo: " : "Flip card: ")
+        : (flipped ? "Kembali ke foto: " : "Balik kartu: ");
+      el.setAttribute("aria-label", prefix + alt);
+    });
+
     // 8. Marquee spans: data-marquee-id and data-marquee-en
     document.querySelectorAll("[data-marquee-id]").forEach(function (el) {
       var val = lang === "en" ? el.getAttribute("data-marquee-en") : el.getAttribute("data-marquee-id");
@@ -346,6 +357,8 @@
       document.body.style.overflow = "";
       window.setTimeout(function () {
         el.style.display = "none";
+        document.documentElement.dataset.loaderDone = "true";
+        document.dispatchEvent(new CustomEvent("loader:done"));
       }, 800);
     }
 
