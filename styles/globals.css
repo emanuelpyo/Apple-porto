@@ -782,6 +782,50 @@ html {
 }
 
 /* ============================================================
+   3D lanyard (three.js). Namespaced .lanyard3d, scoped to #home.
+   The fallback badge stays visible until WebGL signals ready.
+   ============================================================ */
+#home .lanyard3d {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* full hero width: the render surface must cover the reachable drag area,
+     otherwise the card is clipped at the canvas edge. Card scale is set by
+     frameView() from layout.height/size, so this does not resize the card. */
+  width: 100%;
+  height: calc(100% + 2rem);
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+#home .lanyard3d .lanyard-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#home .lanyard3d.lanyard--ready {
+  pointer-events: auto;
+}
+
+/* once the canvas is live, hide the static fallback badge */
+#home .hero-lanyard__stage:has(.lanyard--ready) .lanyard__fallback {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  #home .lanyard3d {
+    width: 100%;
+    height: calc(100% + 1rem);
+  }
+}
+
+/* ============================================================
    Graduation moments, hanging photo cards on a curved string.
    Layers, outer to inner, each owning one transform only:
      .graduation-slot   grid cell + string attachment

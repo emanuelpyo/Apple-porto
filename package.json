@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build:css": "npx --yes @tailwindcss/cli@4 -i styles/globals.css -o public/css/app.css --minify",
-    "build": "npm run build:css && go build -o bin/portfolio ./cmd/server",
+    "build:js": "esbuild public/js/lanyard/index.js --bundle --minify --format=iife --outfile=public/js/lanyard.bundle.js",
+    "build": "npm run build:css && npm run build:js && go build -o bin/portfolio ./cmd/server",
     "start": "./bin/portfolio",
     "dev": "go run ./cmd/server",
     "test": "go test ./cmd/... ./internal/...",
@@ -12,6 +13,10 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "esbuild": "^0.28.2",
     "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
   }
 }

@@ -2,7 +2,15 @@
 <section id="home" class="hero-lanyard cursor-default">
   <div class="hero-word" aria-hidden="true"><span class="hero-word__line">PORTO</span><span class="hero-word__line">FOLIO</span></div>
   <div class="hero-lanyard__stage">
-    <div class="lanyard">
+    <div
+      class="lanyard3d"
+      data-lanyard
+      data-profile-image="/images/profile.jpeg"
+      data-name="{{.Profile.Name}}"
+      data-role="{{index (index .Profile.Roles "en") 0}}"
+      aria-hidden="true"
+    ></div>
+    <div class="lanyard lanyard__fallback">
       <div class="lanyard__strap" aria-hidden="true"></div>
       <div class="lanyard__clip" aria-hidden="true"></div>
 
