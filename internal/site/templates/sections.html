@@ -24,7 +24,7 @@
 {{end}}
 
 {{define "companies"}}
-<section id="companies" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+<section id="companies" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="collab_title">KOLABORASI</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="collab_heading">Kemitraan & Tempat Bertumbuh</h3>
@@ -47,7 +47,7 @@
 {{end}}
 
 {{define "about"}}
-<section id="about" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+<section id="about" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="about_title">Tentang Saya</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="about_heading">Dedikasi & Filosofi</h3>
@@ -106,38 +106,52 @@
 {{end}}
 
 {{define "graduation"}}
-<section id="graduation" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+<section id="graduation" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="grad_eyebrow">Momen</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="grad_title">Dokumentasi Wisuda</h3>
   </div>
 
-  <div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {{range $i, $p := .GraduationPhoto}}
-      <div class="reveal {{if ge $i 3}}hidden{{end}}" data-reveal="up" data-graduation-item="{{$i}}" style="transition-delay: {{mul $i 80}}ms">
-        <button type="button" data-lightbox-open="{{$i}}" class="group relative block w-full aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white/80 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" aria-label="Perbesar {{$p.Alt.ID}}" data-i18n-aria-alt-id="{{$p.Alt.ID}}" data-i18n-aria-alt-en="{{$p.Alt.EN}}">
-          <img src="{{$p.Src}}" alt="{{$p.Alt.ID}}" data-i18n-alt-id="{{$p.Alt.ID}}" data-i18n-alt-en="{{$p.Alt.EN}}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-          <span class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          <span class="absolute bottom-4 left-4 text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5" data-i18n="grad_enlarge">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
-            Perbesar
-          </span>
-        </button>
-      </div>
-      {{end}}
+  <div class="graduation-gallery">
+    <div class="graduation-string-wrap" aria-hidden="true">
+      <svg class="graduation-string" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M8 8 C 220 92, 430 92, 600 78 C 770 64, 980 70, 1192 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
     </div>
 
-    {{if gt (len .GraduationPhoto) 3}}
-    <div class="mt-10 flex justify-center">
-      <button id="graduation-toggle" type="button" aria-expanded="false" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/70 hover:bg-white text-text-primary text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-sm border border-white/80 active:scale-95 backdrop-blur-md">
-        <span id="graduation-toggle-label" data-i18n="grad_view_all">Lihat Semua Foto</span>
-        <svg id="graduation-toggle-icon" class="w-4 h-4 transition-transform duration-300 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-    </div>
-    {{end}}
+    <ul class="graduation-cards" role="list">
+      {{range $i, $p := .GraduationPhoto}}
+      <li class="reveal graduation-slot" data-reveal="up" data-graduation-item="{{$i}}" style="transition-delay: {{mul $i 80}}ms; --card-i: {{$i}}">
+        <span class="graduation-thread" aria-hidden="true"><span class="graduation-clip"></span></span>
+        <div class="graduation-hang" data-graduation-card>
+          <div class="graduation-swing">
+            <button type="button" class="graduation-flip" data-graduation-flip aria-pressed="false" aria-label="Balik kartu: {{$p.Alt.ID}}" data-i18n-aria-flip-id="{{$p.Alt.ID}}" data-i18n-aria-flip-en="{{$p.Alt.EN}}">
+              <span class="graduation-face graduation-front">
+                <span class="graduation-photo">
+                  <img src="{{$p.Src}}" alt="{{$p.Alt.ID}}" data-i18n-alt-id="{{$p.Alt.ID}}" data-i18n-alt-en="{{$p.Alt.EN}}" width="2773" height="4160" loading="lazy" decoding="async" />
+                </span>
+                <span class="graduation-caption" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v6h6M20 20v-6h-6M20 8a8 8 0 0 0-14-3M4 16a8 8 0 0 0 14 3" /></svg>
+                  <span data-i18n="grad_flip_hint">Balik kartu</span>
+                </span>
+              </span>
+              <span class="graduation-face graduation-back" aria-hidden="true">
+                <span class="graduation-back-mark">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v6h6M20 20v-6h-6M20 8a8 8 0 0 0-14-3M4 16a8 8 0 0 0 14 3" /></svg>
+                </span>
+                <span class="graduation-back-title" data-i18n="grad_back_title">Momen Wisuda</span>
+                <span class="graduation-back-note" data-i18n="grad_back_note">Salah satu kenangan hari kelulusan.</span>
+                <span class="graduation-back-return" data-i18n="grad_back_return">Ketuk untuk kembali</span>
+              </span>
+            </button>
+          </div>
+          <button type="button" class="graduation-expand" data-lightbox-open="{{$i}}" aria-label="Perbesar {{$p.Alt.ID}}" data-i18n-aria-alt-id="{{$p.Alt.ID}}" data-i18n-aria-alt-en="{{$p.Alt.EN}}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
+          </button>
+        </div>
+      </li>
+      {{end}}
+    </ul>
   </div>
 
   <!-- Lightbox modal -->
@@ -171,7 +185,7 @@
 {{end}}
 
 {{define "experience"}}
-<section id="experience" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+<section id="experience" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="exp_title">Pengalaman Kerja</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="exp_heading">Karier & Kontribusi</h3>
@@ -208,7 +222,7 @@
 {{end}}
 
 {{define "techstack"}}
-<section id="techstack" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-text-secondary/10">
+<section id="techstack" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-text-secondary/10">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="tech_eyebrow">Keahlian &amp; Alat</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="tech_title">Teknologi</h3>
@@ -384,7 +398,7 @@
 {{end}}
 
 {{define "projects"}}
-<section id="projects" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-text-secondary/10">
+<section id="projects" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-text-secondary/10">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="proj_eyebrow">Portofolio</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="proj_title">Karya Pilihan</h3>
@@ -419,7 +433,7 @@
 {{end}}
 
 {{define "certificates"}}
-<section id="certificates" class="w-full max-w-6xl mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
+<section id="certificates" class="w-full max-w-[96rem] mx-auto py-20 md:py-28 cursor-default px-6 md:px-12 border-t border-white/40">
   <div class="reveal mb-12 md:mb-16" data-reveal="down">
     <h2 class="text-xs font-semibold uppercase tracking-widest text-text-secondary mb-2" data-i18n="cert_eyebrow">Sertifikasi</h2>
     <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="cert_title">Sertifikat</h3>

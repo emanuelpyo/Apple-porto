@@ -329,3 +329,788 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   Hero lanyard. Scoped to #home only.
+   One suspension axis: anchor above viewport -> strap -> clip ->
+   clear casing -> ID card. The whole assembly is one element that
+   rotates; inner layers never own a competing transform.
+   ============================================================ */
+@font-face {
+  font-family: "Instrument Serif Hero";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+}
+
+/* ---- oversized editorial backdrop word (decorative) ---- */
+#home .hero-word {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  font-family: "Instrument Serif Hero", ui-serif, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(4.5rem, 15vw, 15rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgba(15, 23, 42, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+#home .hero-word__line { display: inline; }
+
+@media (max-width: 1100px) {
+  #home .hero-word { top: 42%; font-size: clamp(4rem, 16vw, 9rem); }
+}
+
+/* tablet: single wide line still fits, tuck it up and soften */
+@media (max-width: 834px) {
+  #home .hero-word {
+    top: 33%;
+    font-size: clamp(3.2rem, 13.5vw, 7rem);
+    letter-spacing: -0.03em;
+    color: rgba(15, 23, 42, 0.10);
+  }
+}
+
+/* phone: deliberate two-line stack, sits clear of the badge */
+@media (max-width: 600px) {
+  #home .hero-word {
+    top: auto;
+    bottom: 4.5rem;
+    left: 0;
+    transform: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    white-space: normal;
+    text-align: center;
+    font-size: clamp(3rem, 17vw, 4.2rem);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    color: rgba(15, 23, 42, 0.12);
+  }
+  #home .hero-word__line { display: block; }
+}
+
+#home.hero-lanyard {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 9vh, 6.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vh, 3.5rem);
+  min-height: min(100svh, 56rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+
+/* ---- transition: attached editorial lead-in to the first section ---- */
+#home .hero-lanyard__transition {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 24rem;
+  margin-top: auto;
+  padding-top: clamp(2.25rem, 5vh, 3.25rem);
+  color: var(--text-tertiary);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* hairline rising from the badge into the label, ties hero to next section */
+#home .hero-lanyard__transition::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: clamp(1.75rem, 4vh, 2.75rem);
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.35) 100%);
+}
+
+#home .hero-lanyard__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.45) 100%);
+}
+
+#home .hero-lanyard__rule:last-of-type {
+  background: linear-gradient(270deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.45) 100%);
+}
+
+#home .hero-lanyard__index { white-space: nowrap; color: var(--text-secondary); }
+
+#home .hero-lanyard__cue {
+  display: inline-flex;
+  color: rgba(2,132,199,0.7);
+}
+
+/* ---- stage: centered suspension axis, independent of viewport width ---- */
+#home .hero-lanyard__stage {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---- assembly: rotates as ONE object around the anchor ---- */
+#home .lanyard {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(15rem, 21vw, 18.5rem);
+  margin-left: calc(clamp(15rem, 21vw, 18.5rem) / -2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  pointer-events: auto;
+}
+
+/* ---- strap: woven fabric, cut in two angled runs so it reads as a
+   real lanyard loop rather than one flat rectangle. Left run sits
+   slightly forward (lit), right run recedes (shadowed). ---- */
+#home .lanyard__strap {
+  position: relative;
+  width: 46px;
+  height: clamp(16rem, 34vh, 26rem);
+  margin-top: calc(-1 * clamp(16rem, 34vh, 26rem));
+  background: transparent;
+  filter: drop-shadow(0 4px 6px rgba(15,23,42,0.28));
+}
+
+/* left run: forward, catches light */
+#home .lanyard__strap::before,
+#home .lanyard__strap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  border-radius: 3px;
+  background:
+    /* woven weft grain */
+    repeating-linear-gradient(180deg,
+      rgba(255,255,255,0.055) 0 1px,
+      rgba(0,0,0,0) 1px 3px,
+      rgba(0,0,0,0.11) 3px 4px,
+      rgba(0,0,0,0) 4px 6px),
+    /* warp sheen across width */
+    linear-gradient(90deg,
+      rgba(255,255,255,0.16) 0%,
+      rgba(255,255,255,0.03) 30%,
+      rgba(0,0,0,0.14) 70%,
+      rgba(0,0,0,0.34) 100%),
+    #12161b;
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,0.14),
+    inset -1px 0 0 rgba(0,0,0,0.5);
+}
+
+/* left run: bows outward, slight taper toward the clip */
+#home .lanyard__strap::before {
+  left: 2px;
+  transform-origin: 50% 100%;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
+}
+
+/* right run: recedes behind, darker, tapers harder into the clip */
+#home .lanyard__strap::after {
+  right: 2px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%);
+  background:
+    repeating-linear-gradient(180deg,
+      rgba(255,255,255,0.03) 0 1px,
+      rgba(0,0,0,0) 1px 3px,
+      rgba(0,0,0,0.16) 3px 4px,
+      rgba(0,0,0,0) 4px 6px),
+    linear-gradient(90deg,
+      rgba(255,255,255,0.05) 0%,
+      rgba(0,0,0,0.28) 34%,
+      rgba(0,0,0,0.46) 72%,
+      rgba(0,0,0,0.6) 100%),
+    #0c0f13;
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,0.06),
+    inset -1px 0 0 rgba(0,0,0,0.6);
+}
+
+/* stitching: cyan-mint thread along inner selvedges of both runs */
+#home .lanyard__strap {
+  --stitch: repeating-linear-gradient(180deg,
+    rgba(103,232,249,0.55) 0 4px,
+    rgba(103,232,249,0) 4px 9px);
+}
+#home .lanyard__strap::before {
+  border-right: 1px dashed rgba(103,232,249,0.28);
+}
+#home .lanyard__strap::after {
+  border-left: 1px dashed rgba(103,232,249,0.16);
+}
+
+/* ---- clip: brushed metal swivel hook with real depth ---- */
+#home .lanyard__clip {
+  position: relative;
+  width: 28px;
+  height: 32px;
+  margin-top: -3px;
+  border-radius: 2px 2px 5px 5px;
+  background:
+    /* brushed vertical grain */
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.10) 0 1px,
+      rgba(0,0,0,0.04) 1px 2px),
+    /* cylindrical shading */
+    linear-gradient(90deg,
+      #eef3f8 0%,
+      #c3ccd7 18%,
+      #7c8796 44%,
+      #9aa6b4 58%,
+      #d6dee7 82%,
+      #f6f9fc 100%),
+    #aeb8c5;
+  box-shadow:
+    0 4px 7px -2px rgba(15,23,42,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -2px 3px rgba(15,23,42,0.28),
+    inset 1px 0 0 rgba(255,255,255,0.5),
+    inset -1px 0 0 rgba(15,23,42,0.3);
+}
+
+/* swivel ring seated into the strap loop */
+#home .lanyard__clip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  width: 19px;
+  height: 19px;
+  transform: translateX(-50%);
+  border: 3px solid #8d98a6;
+  border-top-color: #e6edf4;
+  border-right-color: #b4bfcc;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow:
+    0 1px 2px rgba(15,23,42,0.32),
+    inset 0 1px 1px rgba(255,255,255,0.7),
+    inset 0 -1px 1px rgba(15,23,42,0.25);
+}
+
+/* lower jaw: strap-grip plate with recessed slot, overlaps badge punch */
+#home .lanyard__clip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 16px;
+  height: 9px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg,
+      #9aa5b3 0%,
+      #6d7887 46%,
+      #8b97a5 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(15,23,42,0.4),
+    0 1px 2px rgba(15,23,42,0.32);
+}
+
+#home .badge {
+  position: relative;
+  width: 100%;
+  margin-top: 4px;
+}
+
+#home .badge__case {
+  position: relative;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.82);
+  background: linear-gradient(158deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.14) 52%, rgba(255,255,255,0.34) 100%);
+  box-shadow:
+    0 34px 54px -28px rgba(15,23,42,0.5),
+    0 12px 22px -14px rgba(15,23,42,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+  overflow: hidden;
+}
+
+#home .badge__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 28px 16px 16px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f9fd 100%);
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,0.05);
+}
+
+#home .badge__punch {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 42px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(15,23,42,0.16);
+  box-shadow: inset 0 1px 2px rgba(15,23,42,0.34), 0 1px 0 rgba(255,255,255,0.9);
+}
+
+#home .badge__portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+#home .badge__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transform: none;
+}
+
+#home .badge__name {
+  margin: 2px 0 0;
+  font-family: "Instrument Serif Hero", ui-serif, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.4vw, 1.95rem);
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  color: var(--text-primary);
+}
+
+#home .badge__role {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  min-height: 1em;
+}
+
+#home .badge__caret {
+  margin-left: 1px;
+  animation: blink 1.5s infinite;
+}
+
+#home .badge__facts {
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#home .badge__facts > div {
+  padding-top: 6px;
+  border-top: 1px solid rgba(15,23,42,0.07);
+}
+
+#home .badge__facts dt {
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+#home .badge__facts dd {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+#home .badge__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(112deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 68%, rgba(255,255,255,0.28) 100%);
+}
+
+@media (max-width: 900px) {
+  #home.hero-lanyard {
+    padding-bottom: clamp(2rem, 6vh, 3.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  #home .lanyard { width: clamp(13rem, 66vw, 16rem); margin-left: calc(clamp(13rem, 66vw, 16rem) / -2); }
+  #home .lanyard__strap { height: clamp(12rem, 30vh, 18rem); margin-top: calc(-1 * clamp(12rem, 30vh, 18rem)); }
+  #home .badge__card { padding: 24px 13px 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home .lanyard { transform: none !important; }
+  #home .badge__caret { animation: none; }
+}
+
+/* ============================================================
+   Graduation moments, hanging photo cards on a curved string.
+   Layers, outer to inner, each owning one transform only:
+     .graduation-slot   grid cell + string attachment
+     .graduation-hang   pointer-driven hang sway (JS vars)
+     .graduation-swing  hover lift + drop-in settle
+     .graduation-flip   the 3D flip itself
+   Scoped to #graduation so nothing else is affected.
+   ============================================================ */
+#graduation .graduation-gallery {
+  position: relative;
+}
+
+#graduation .graduation-string-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  pointer-events: none;
+  color: rgba(51, 65, 85, 0.28);
+}
+
+#graduation .graduation-string {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+#graduation .graduation-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.2vw, 2.75rem);
+  padding: 4.25rem 0 0;
+  align-items: start;
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+#graduation .graduation-slot {
+  position: relative;
+  perspective: 1200px;
+  /* hanging: thread length + resting angle, varied per card */
+  --thread: 46px;
+  --hang-angle: -2.4deg;
+}
+
+#graduation .graduation-slot:nth-child(2) { --thread: 72px; --hang-angle: 1.8deg; }
+#graduation .graduation-slot:nth-child(3) { --thread: 38px; --hang-angle: -1.2deg; }
+#graduation .graduation-slot:nth-child(4) { --thread: 66px; --hang-angle: 2.2deg; }
+#graduation .graduation-slot:nth-child(5) { --thread: 52px; --hang-angle: -1.6deg; }
+
+#graduation .graduation-thread {
+  position: absolute;
+  top: calc(var(--thread) * -1);
+  left: 50%;
+  width: 1px;
+  height: var(--thread);
+  background: linear-gradient(to bottom, rgba(51, 65, 85, 0.1), rgba(51, 65, 85, 0.4));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+#graduation .graduation-clip {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 11px;
+  height: 8px;
+  transform: translateX(-50%);
+  border-radius: 2px 2px 3px 3px;
+  background: #e2e8f0;
+  border: 1px solid rgba(51, 65, 85, 0.35);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
+}
+
+#graduation .graduation-hang {
+  position: relative;
+  transform-origin: 50% 0;
+  transform: rotate(var(--hang-angle)) rotate(calc(var(--sway, 0) * 1deg));
+  transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.4, 1);
+  will-change: transform;
+}
+
+#graduation .graduation-swing {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+#graduation .graduation-hang:hover .graduation-swing,
+#graduation .graduation-hang:focus-within .graduation-swing {
+  transform: translateY(-7px);
+}
+
+#graduation .graduation-flip {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.34, 1.16, 0.4, 1);
+}
+
+#graduation .graduation-flip[aria-pressed="true"] {
+  transform: rotateY(180deg);
+}
+
+#graduation .graduation-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 34px -16px rgba(15, 23, 42, 0.32),
+    0 3px 8px -3px rgba(15, 23, 42, 0.12);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: box-shadow 0.4s ease;
+}
+
+#graduation .graduation-hang:hover .graduation-face {
+  box-shadow: 0 26px 46px -18px rgba(15, 23, 42, 0.42),
+    0 4px 10px -4px rgba(15, 23, 42, 0.16);
+}
+
+#graduation .graduation-front {
+  padding: 8px;
+}
+
+#graduation .graduation-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#graduation .graduation-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 26%;
+  transition: transform 0.6s ease-out;
+}
+
+#graduation .graduation-hang:hover .graduation-front img {
+  transform: scale(1.035);
+}
+
+#graduation .graduation-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px -6px rgba(15, 23, 42, 0.4);
+  opacity: 0;
+  transform: translate(-50%, 5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#graduation .graduation-caption svg {
+  width: 12px;
+  height: 12px;
+}
+
+#graduation .graduation-hang:hover .graduation-caption {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+#graduation .graduation-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--text-primary);
+  background: linear-gradient(165deg, #ffffff 0%, #eaf5fe 100%);
+}
+
+#graduation .graduation-back-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--accent);
+}
+
+#graduation .graduation-back-mark svg {
+  width: 18px;
+  height: 18px;
+}
+
+#graduation .graduation-back-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+#graduation .graduation-back-note {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  max-width: 12rem;
+}
+
+#graduation .graduation-back-return {
+  margin-top: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+#graduation .graduation-expand {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px -5px rgba(15, 23, 42, 0.45);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  cursor: pointer;
+}
+
+#graduation .graduation-expand svg {
+  width: 14px;
+  height: 14px;
+}
+
+#graduation .graduation-hang:hover .graduation-expand,
+#graduation .graduation-expand:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#graduation .graduation-expand:hover {
+  background: #fff;
+}
+
+@media (max-width: 1023px) {
+  #graduation .graduation-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 1.5rem;
+    max-width: none;
+  }
+
+  #graduation .graduation-slot:nth-child(4) { --thread: 46px; --hang-angle: -1.8deg; }
+  #graduation .graduation-slot:nth-child(5) { --thread: 64px; --hang-angle: 2deg; }
+}
+
+@media (max-width: 639px) {
+  #graduation .graduation-string-wrap {
+    display: none;
+  }
+
+  #graduation .graduation-cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 20rem;
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  #graduation .graduation-slot,
+  #graduation .graduation-slot:nth-child(2),
+  #graduation .graduation-slot:nth-child(3),
+  #graduation .graduation-slot:nth-child(4),
+  #graduation .graduation-slot:nth-child(5) {
+    --thread: 0px;
+    --hang-angle: 0deg;
+  }
+
+  #graduation .graduation-thread {
+    display: none;
+  }
+
+  #graduation .graduation-expand {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #graduation .graduation-hang,
+  #graduation .graduation-swing,
+  #graduation .graduation-front img {
+    transition: none;
+    transform: none;
+  }
+
+  #graduation .graduation-hang {
+    transform: rotate(var(--hang-angle));
+  }
+
+  #graduation .graduation-flip {
+    transition: none;
+  }
+}
