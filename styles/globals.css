@@ -406,15 +406,16 @@ html {
   position: relative;
   isolation: isolate;
   width: 100%;
-  max-width: 96rem;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: clamp(4.5rem, 9vh, 6.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vh, 3.5rem);
   min-height: min(100svh, 56rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 
@@ -788,13 +789,12 @@ html {
 #home .lanyard3d {
   position: absolute;
   top: 0;
-  left: 50%;
   /* full hero width: the render surface must cover the reachable drag area,
      otherwise the card is clipped at the canvas edge. Card scale is set by
      frameView() from layout.height/size, so this does not resize the card. */
-  width: 100%;
+  left: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  width: calc(100% + 2 * clamp(1.25rem, 4vw, 3rem));
   height: calc(100% + 2rem);
-  transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
   overflow: visible;
