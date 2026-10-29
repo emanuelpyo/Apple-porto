@@ -13,7 +13,10 @@ if (root) {
     orientation: 'portrait',
     finish: 'glossy',
     cornerRadius: 0.3,
-    size: 0.6,
+    // Keep the card's apparent size constant as the canvas height changes.
+    // frameView() fits by canvas height, so scale the size by the ratio to
+    // the reference canvas that produced the original 443px card.
+    size: (canvasHeight) => 0.6 * (739 / Math.max(1, canvasHeight)),
     anchor: 'center',
     strapLength: 0.5,
     strapColor: '#111111',

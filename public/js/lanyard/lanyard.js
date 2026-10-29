@@ -915,7 +915,8 @@ export const initLanyard = (container, options = {}) => {
 
   const frameView = () => {
     const aspect = view.width / view.height;
-    let viewHeight = layout.height / clamp(settings.size, 0.15, 0.9);
+    const cardSize = typeof settings.size === 'function' ? settings.size(view.height) : settings.size;
+    let viewHeight = layout.height / clamp(cardSize, 0.15, 0.9);
     const minimumWidth = layout.width / 0.72;
     if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
     const viewWidth = viewHeight * aspect;
@@ -954,7 +955,7 @@ export const initLanyard = (container, options = {}) => {
       ring.position.set(0, layout.ringY, 0);
       applied.framingKey = '';
     }
-    const framingKey = `${layoutKey}|${settings.size}|${settings.anchor}|${settings.strapLength}|${view.width}|${view.height}`;
+    const framingKey = `${layoutKey}|${settings.anchor}|${settings.strapLength}|${view.width}|${view.height}`;
     if (framingKey !== applied.framingKey) {
       frameView();
       if (!placed) {

@@ -439,26 +439,9 @@ html {
   pointer-events: none;
 }
 
-/* hairline rising from the badge into the label, ties hero to next section */
-#home .hero-lanyard__transition::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: clamp(1.75rem, 4vh, 2.75rem);
-  transform: translateX(-50%);
-  background: linear-gradient(180deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.35) 100%);
-}
-
+/* decorative hairlines removed: they rendered as a bottom boundary over the hero */
 #home .hero-lanyard__rule {
-  flex: 1 1 auto;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.45) 100%);
-}
-
-#home .hero-lanyard__rule:last-of-type {
-  background: linear-gradient(270deg, rgba(2,132,199,0) 0%, rgba(2,132,199,0.45) 100%);
+  display: none;
 }
 
 #home .hero-lanyard__index { white-space: nowrap; color: var(--text-secondary); }
@@ -794,7 +777,7 @@ html {
      frameView() from layout.height/size, so this does not resize the card. */
   left: calc(-1 * clamp(1.25rem, 4vw, 3rem));
   width: calc(100% + 2 * clamp(1.25rem, 4vw, 3rem));
-  height: calc(100% + 2rem);
+  height: calc(100% + 40rem);
   z-index: 2;
   pointer-events: none;
   overflow: visible;
