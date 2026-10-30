@@ -802,9 +802,10 @@ html {
 }
 
 @media (max-width: 600px) {
+  /* same boundary-free surface as desktop; taller overshoot because the
+     mobile stage is shorter relative to the card travel */
   #home .lanyard3d {
-    width: 100%;
-    height: calc(100% + 1rem);
+    height: calc(100% + 48rem);
   }
 }
 

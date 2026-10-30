@@ -25,7 +25,8 @@ if (root) {
     gravity: 1,
     damping: 0.5,
     elasticity: 0.5,
-    breeze: 0.5,
+    // gentler ambient sway on phones; keeps motion but steadies the highlight
+    breeze: innerWidth < 600 ? 0.25 : 0.5,
     interactive: true,
     intro: true
   });

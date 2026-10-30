@@ -987,12 +987,17 @@ export const initLanyard = (container, options = {}) => {
     if (settings.strapColor !== applied.strapColor) repaintStrap();
 
     const finish = FINISHES[settings.finish] || FINISHES.glossy;
+    // Mobile: widen the specular lobe so the glossy highlight stops shimmering
+    // on small cards. Desktop keeps the original sharp clearcoat.
+    const mobileGlossy = innerWidth < 600 && settings.finish === 'glossy';
+    const coatRoughness = mobileGlossy ? 0.16 : finish.clearcoatRoughness;
+    const bodyRoughness = mobileGlossy ? 0.5 : finish.roughness;
     const card = parseColor(settings.cardColor, [1, 1, 1]);
     [frontMaterial, backMaterial].forEach(material => {
-      material.roughness = finish.roughness;
+      material.roughness = bodyRoughness;
       material.metalness = finish.metalness;
       material.clearcoat = finish.clearcoat;
-      material.clearcoatRoughness = finish.clearcoatRoughness;
+      material.clearcoatRoughness = coatRoughness;
       material.anisotropy = finish.anisotropy;
     });
     foilUniforms.foilStrength.value = finish.foil;
@@ -1246,7 +1251,10 @@ export const initLanyard = (container, options = {}) => {
   const resize = () => {
     view.width = Math.max(1, container.clientWidth);
     view.height = Math.max(1, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelBudget = 2_500_000;
+    const areaScale = Math.sqrt(pixelBudget / (view.width * view.height));
+    renderer.setPixelRatio(Math.max(1, Math.min(dpr, areaScale)));
     renderer.setSize(view.width, view.height, false);
     apply();
     render();
